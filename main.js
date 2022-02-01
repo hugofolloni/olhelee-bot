@@ -12,14 +12,14 @@ client.once('ready', () => {
 
 client.on('voiceStateUpdate', async (oldState, newState) => {
     if(newState.member.id === client.user.id) return;
-    const channel = client.channels.cache.get('867457879047929918');
+    const channel = client.channels.cache.get('938153500918026240');
     if(newState.channelID === null){
         console.log(`${newState.member.displayName} left channel ${oldState.channel.name}`);
         channel.send(`${newState.member.displayName} saiu do canal ${oldState.channel.name}`);
     }
     else{
         console.log(`${newState.member.displayName} joined channel ${newState.channel.name}`);
-        channel.send(`${newState.member.displayName} entrou no canal ${newState.channel.name}`);
+        channel.send(`   *** OLHA ELE AE! *** \n${newState.member.displayName} entrou no canal ${newState.channel.name}`);
         const voiceChannel = newState.member.voice.channel;
         const connection = await voiceChannel.join();
         const ytdl = require('ytdl-core')
