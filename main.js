@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { token } = require('./config.json');
+const { channelToMessage, token } = require('./config.json');
 
 const client = new Discord.Client();
 
@@ -13,7 +13,7 @@ client.once('ready', () => {
 client.on('voiceStateUpdate', async (oldState, newState) => {
     if(newState.member.id === client.user.id || newState.member.user.bot) return;
     if(newState.channelID === oldState.channelID) return;
-    const channel = client.channels.cache.get('938153500918026240');
+    const channel = client.channels.cache.get(channelToMessage);
     if(newState.channelID === null){
         console.log(`${newState.member.displayName} left channel ${oldState.channel.name}`);
         channel.send(`${newState.member.displayName} saiu do canal ${oldState.channel.name}`);
