@@ -11,7 +11,7 @@ client.once('ready', () => {
 
 
 client.on('voiceStateUpdate', async (oldState, newState) => {
-    if(newState.member.id === client.user.id) return;
+    if(newState.member.id === client.user.id || newState.member.user.bot) return;
     const channel = client.channels.cache.get('938153500918026240');
     if(newState.channelID === null){
         console.log(`${newState.member.displayName} left channel ${oldState.channel.name}`);
